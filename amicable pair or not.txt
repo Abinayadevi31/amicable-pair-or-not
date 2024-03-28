@@ -1,0 +1,36 @@
+# include <stdio.h>
+# include <stdlib.h>
+# include <stdbool.h>
+# include <math.h>
+
+
+int ProDivSum(int n)
+{
+    int sum = 1;
+    for (int i=2; i<=sqrt(n); i++)
+    {
+        if (n%i == 0)
+        {
+            sum += i;
+            if (n/i != i)
+                sum += n/i;
+        }
+    }
+    return sum;
+}
+bool chkAmicable(int a,int b)
+{
+    return(ProDivSum(a) == b && ProDivSum(b) == a);
+}
+int main()
+{
+    int nm1,nm2;   
+        scanf("%d %d",&nm1,&nm2);  
+   
+
+      if( chkAmicable(nm1,nm2))
+        printf("Amicable Pair\n");
+    else
+        printf("Not a Amicable Pair\n");
+    return 0;
+}
